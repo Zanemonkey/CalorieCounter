@@ -45,15 +45,23 @@ class Calculator extends React.Component {
 
     pace (distance, time) {
         
+        if (isNaN(distance) || isNaN(time)) return 0;
+
         // given distance in m and time in minutes, returns pace in km/h
         return ( (distance / time) * 60 ) / 1000;
     }
 
     mets (pace, time) {
+        
+        if (isNaN(pace) || isNaN(time)) return 0;
+        
         return (pace - .2) * (time / 60);
     }
 
     calories (bmr, mets) {
+
+        if (isNaN(bmr) || isNaN(mets)) return 0;
+
         return bmr * mets / 24;
     }
 
@@ -76,20 +84,25 @@ class Calculator extends React.Component {
                 <form className="ui form">
                 <div className="fields">
                         <div className="field">
-                            <label>Weight</label>
+                            <label>Weight (kg)</label>
                             <input
                             type="number"
                             name="weight"
                             value={this.state.weight}
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange}
+                            min="0"
+                            max="300"
+                            className="ui input" />
                         </div>
                         <div className="field">
-                            <label>Height</label>
+                            <label>Height (cm)</label>
                             <input
                             type="number"
                             name="height"
                             value={this.state.height}
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange}
+                            min="0"
+                            max="300" />
                         </div>
                         <div className="field">
                             <label>Age</label>
@@ -97,7 +110,9 @@ class Calculator extends React.Component {
                             type="number"
                             name="age"
                             value={this.state.age}
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange}
+                            min="1"
+                            max="150" />
                         </div>
                         <div className="field">
                             <label>Gender</label>
@@ -114,7 +129,8 @@ class Calculator extends React.Component {
                             type="number"
                             name="distance"
                             value={this.state.distance}
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange}
+                            min="0" />
                         </div>
                         <div className="field">
                             <label>Time (min)</label>
@@ -122,13 +138,14 @@ class Calculator extends React.Component {
                             type="number"
                             name="time"
                             value={this.state.time}
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange}
+                            min="0" />
                         </div>
                     </div>
                         
                     <div className="fields">
                         <div className="field">
-                            <button className="ui primary button" onClick={this.calculate}>Submit</button>
+                            <button className="ui primary button" onClick={this.calculate}>Calculate</button>
                         </div>
                     </div>
                         
