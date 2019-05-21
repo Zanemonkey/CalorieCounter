@@ -116,7 +116,7 @@ class Calculator extends React.Component {
                         </div>
                         <div className="field">
                             <label>Gender</label>
-                            <select name="gender">
+                            <select name="gender" onChange={this.handleInputChange}>
                                 <option value='m' selected>Male</option>
                                 <option value='f'>Female</option>
                             </select>
