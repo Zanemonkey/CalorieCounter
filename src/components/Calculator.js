@@ -5,9 +5,9 @@ class Calculator extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            weight: 83,
-            height: 175,
-            age: 32,
+            weight: 0,
+            height: 0,
+            age: 0,
             gender: 'm',
             distance: 0,
             time: 0,
